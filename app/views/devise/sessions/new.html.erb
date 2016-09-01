@@ -1,0 +1,33 @@
+<div class="col-md-7 bg_generalpage">
+  <div class="slide_sow">
+    <%= image_tag  "pic1.jpg" %>
+    
+  </div>
+</div>
+<div class="col-md-5">
+  <div class="form_signin">
+    <a href="#" class="logo_sign"></a>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        
+        <%= f.email_field :email,placeholder: "Имя пользователя", autofocus: true, class: "form-control" %>
+      </div>
+      <br>
+      <div class="field">
+       
+        <%= f.password_field :password, placeholder: "Пароль", autocomplete: "off", class: "form-control" %>
+      </div>
+
+
+      <br>
+      <div class="actions">
+        <%= f.submit "Войти", class: "btn btn-info" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="form_signin">
+    <%= render "devise/shared/links" %>
+    
+  </div>
+</div>

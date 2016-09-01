@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        upload_picture
+        # upload_picture
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        upload_picture
+        # upload_picture
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -63,15 +63,15 @@ class UsersController < ApplicationController
     end
   end
   private
-  def upload_picture
-    uploaded_file = params[:user][:avatar]
-      unless uploaded_file.nil?
-        new_file_path = Rails.root.join('public','uploads', 'avatars', @user.id.to_s)
-        File.open(new_file_path, 'wb') do |file|
-        file.write uploaded_file.read
-      end
-    end
-  end
+  # def upload_picture
+  #   uploaded_file = params[:user][:avatar]
+  #     unless uploaded_file.nil?
+  #       new_file_path = Rails.root.join('public','uploads', 'avatars', @user.id.to_s)
+  #       File.open(new_file_path, 'wb') do |file|
+  #       file.write uploaded_file.read
+  #     end
+  #   end
+  # end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
