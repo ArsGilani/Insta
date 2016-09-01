@@ -13,8 +13,13 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      <ul class="navbar-nav navbar-right">
+      <ul class="navabar-nav navbar-left formul">
+        <li class="formli">
+          <form action="#"><input placeholder="Поиск"></form>
+          <span class="search_ic"></span>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right ">
         <% if user_signed_in? %>
           <li class="navbar-text">
             <%= link_to '', user_path(current_user), class: 'user-interes' %>

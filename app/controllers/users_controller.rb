@@ -62,8 +62,9 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
   def upload_picture
-    uploaded_file = params[:user][:picture]
+    uploaded_file = params[:user][:avatar]
       unless uploaded_file.nil?
         new_file_path = Rails.root.join('public','uploads', 'avatars', @user.id.to_s)
         File.open(new_file_path, 'wb') do |file|
@@ -71,7 +72,6 @@ class UsersController < ApplicationController
       end
     end
   end
-  private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
