@@ -1,28 +1,43 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<div class="row">
+			<h5 class="index_title"><strong>Публикации</strong></h5>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.description %></td>
-        <td><%= link_to image_tag @post.avatar.url(:medium)%></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+		<div class="index_wrap_box">
+		    <div class="up_block">
+			    <div class="user_img_thumb">
+					<%= link_to image_tag post.user.avatar.url(:thumb)%>
+				</div>	
+				<div class="info_index_box">
+					<span class="user_name_index"><%= post.user.name %>	</span>	
+	        		<p >
+	        			<%= post.description %>
+	        		</p>	
+					
+				</div>    	
+		    </div>
+		    <div class="wrap_img_box2">
+	         	<%= link_to image_tag post.image.url(:medium) %>	    	
+		    </div>
+			<br>
+		    <div class=".comments_box">
+		    	<b><span>отметок&nbsp;</span>"нравится"</b>
+		    </div>
+	  		<hr>
+	  		<div class="index_add_comment">
+	  			<%= link_to'',root_path, class: "like_index" %>
+	  		</div>
+
+	        <td><%= link_to 'Show', post %></td>
+	        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+	        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      </tr>
+		</div>
     <% end %>
-  </tbody>
-</table>
+</div>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+

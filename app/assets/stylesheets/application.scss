@@ -250,9 +250,119 @@ h4 a{
 	height: auto;
 }
 .in_box{
-	height: 270px;
+
 	margin-bottom: 20px;
-	border: 1px solid#262626;
-	padding: 10px 10px 0 10px;
-	background: #F5F5F5;
+	border: 1px solid #dbdbdb;
+	padding: 10px 10px 10px 10px;
+	position: relative;
+}
+.block_like{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	bottom:0;
+	left: 0;
+	cursor: pointer;
+}
+.like{
+	background-image: image-url('684453.png');    
+	background-repeat: no-repeat;
+    background-position: -685px -321px;
+    height: 19px;
+    width: 19px;
+    display: inline-block;
+    opacity:0 ;
+   	margin-top: 30%;
+   	margin-left: 30px;
+   	cursor: pointer;
+}
+
+.block_like:hover .like{
+	opacity: 1;
+}
+.block_like:hover .comment{
+	opacity: 1;
+}
+.comment{
+	background-image: image-url('684453.png');        
+	background-repeat: no-repeat;
+    background-position: -277px -635px;
+    height: 19px;
+    width: 19px;
+    display: inline-block;
+    opacity:0 ;
+   	margin-top: 30%;
+   	margin-left: 70px;
+	cursor: pointer;
+}
+.border_show_img{
+	border: 1px solid #dbdbdb;
+}
+
+.wrap_img_show{
+	width: 600px;
+	padding-top: 10px;
+	margin-bottom: 10px;
+	float: left;
+}
+.wrap_img_show img{
+	width: 100%;
+}
+.user_img_thumb{
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	margin: 20px;
+}
+.user_img_thumb img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.wrap_description{
+	width: 320px;
+	float: left;
+	margin-left: 10px;
+}
+.h5post{
+	font-size: 18px;
+	text-align: center;
+}
+
+.user_name_index{
+	display: inline-block;
+
+}
+.info_index_box{
+	display: inline-block;
+	margin-top: 5px;
+}
+.up_block p{
+	display: block;
+}
+.index_wrap_box{
+	max-width: 600px;
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	border: 1px solid #efefef;
+	background: #fff;
+}
+.wrap_img_box2{
+	width: 100%;
+}
+.wrap_img_box2 img{
+	width: 100%;
+}
+.like_index{
+	background-image: image-url('684453.png');        
+    background-repeat: no-repeat;
+    background-position: -130px -635px;
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+    cursor: pointer;
+}
+.index_title{
+	text-align: center;
 }
