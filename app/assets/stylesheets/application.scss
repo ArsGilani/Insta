@@ -229,3 +229,30 @@ h4 a{
 	width: 240px;
 	height: 427px;
 }
+
+.new-post{
+	background-image: image-url('684453.png');
+    background-repeat: no-repeat;
+    background-position: -505px -585px;
+    height: 26px;
+    width: 27px;
+    display: inline-block;
+    margin-top: 9px;
+
+}
+.wrap_post_img{
+	width: 270px;
+	height: 200px;
+	overflow: hidden;
+}
+.wrap_post_img img{
+	width: 100%;
+	height: auto;
+}
+.in_box{
+	height: 270px;
+	margin-bottom: 20px;
+	border: 1px solid#262626;
+	padding: 10px 10px 0 10px;
+	background: #F5F5F5;
+}

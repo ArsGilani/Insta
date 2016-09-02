@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    
   end
 
   # GET /posts/new
@@ -24,11 +25,11 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
-
+    @post = current_user.posts.build(post_params)
+    
     respond_to do |format|
       if @post.save
-        upload_picture
+        
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -43,7 +44,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        upload_picture
+        
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -64,15 +65,7 @@ class PostsController < ApplicationController
   end
 
   private
-   def upload_picture
-    uploaded_file = params[:user][:avatar]
-      unless uploaded_file.nil?
-        new_file_path = Rails.root.join('public','uploads', 'posts', @post.id.to_s)
-        File.open(new_file_path, 'wb') do |file|
-        file.write uploaded_file.read
-      end
-    end
-  end
+   
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
@@ -80,6 +73,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:description)
+      params.require(:post).permit(:description, :image, :user_id)
     end
 end
