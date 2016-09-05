@@ -1,18 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h4 class="ineresh1">Интересные люди</h4>
 
 
-  
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.avatar %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <div class="row">
+  	<div class="index_wrap_box">
+	    <% @users.each do |user| %>
+	    	<div class="user_all_index">
+				<div class="user_img_thumb ">
+					<%= image_tag user.avatar.url{:thumb} %>				
+				</div>
+					<p class="name_interest_index">
+				        <%= link_to user.name, user_path(user) %>						
+					</p>
+				<div class="downbox new_class">
+					<%= user.posts.count %>
+
+					<a href="#"> Публикация</a>
+					<%= user.followers.count %>
+					<a href="#">подписчиков</a>
+					<%= user.followed_users.count %>
+					<a href="#">Подписки:&nbsp;</a>
+				</div>
+				<% unless current_user?(user) %>
+				  <div id="follow_form">
+				  	<%= render 'follow_form', user: user %>
+				  </div>
+				<% end %>
+	    	</div>
+	      <hr>
+	     
+	    <% end %>  	
+  	</div>
+  </div>
 
 <br>
 

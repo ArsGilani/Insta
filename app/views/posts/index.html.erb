@@ -11,7 +11,9 @@
 					<%= link_to image_tag post.user.avatar.url(:thumb)%>
 				</div>	
 				<div class="info_index_box">
-					<span class="user_name_index"><%= post.user.name %>	</span>	
+					<span class="user_name_index">
+						<%= link_to post.user.name, user_path(post.user) %>
+					</span>	
 	        		<p >
 	        			<%= post.description %>
 	        		</p>	
@@ -19,21 +21,48 @@
 				</div>    	
 		    </div>
 		    <div class="wrap_img_box2">
-	         	<%= link_to image_tag post.image.url(:medium) %>	    	
-		    </div>
-			<br>
-		    <div class=".comments_box">
-		    	<b><span>отметок&nbsp;</span>"нравится"</b>
-		    </div>
-	  		<hr>
-	  		<div class="index_add_comment">
-	  			<%= link_to'',root_path, class: "like_index" %>
-	  		</div>
+	         	<%= link_to image_tag post.image.url(:medium) %>
 
-	        <td><%= link_to 'Show', post %></td>
-	        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-	        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	      </tr>
+		    </div>
+
+		    <div class="comments_box">
+		    	<div class="in_like_box">
+		    		<span>отметок&nbsp;&nbsp;&#171;нравится&#187;</span>	
+		    	</div>
+		    </div>
+			<div class="in_box_d">
+
+  				<% post.comments.each do |comment| %>
+	  				<div class="wrap_comment">
+	  					<div class="name_new_commit">
+							<span><b> <%= comment.user.name %>:</b> </span>	
+	  						
+	  					</div>
+						
+						<div class="p_comm_des">
+							<p> <%= comment.description %></p>
+
+						<% if current_user == post.user %>	
+						<%= link_to 'X', comment_path(comment),class: "destroy", method: :delete, data: { confirm: 'Are you sure?' } %>
+						<% end %>
+						</div>	
+
+					</div>	
+				<% end %>					  				
+			</div>
+	 
+	  		<div class="index_add_comment">
+	  		<% if current_user.following?(post.user ) or current_user == post.user %>
+
+
+	  			<div class="index_add_comment_a">
+	  				<%= link_to'',root_path, class: "like_index" %>			
+	  			</div>
+	  			<div class="index_form_box">
+					<%= render '/comments/form.html.erb', comment: @comment, post: post %>	  				
+	  			</div>
+			<% end %>
+	  		</div>	        
 		</div>
     <% end %>
 </div>

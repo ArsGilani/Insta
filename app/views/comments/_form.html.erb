@@ -1,0 +1,13 @@
+<%= form_for(comment)  do |f| %>
+   <div class="text_area field">
+ 
+    <%= f.text_area :description, placeholder: "Add a comment..." %>
+    <%= f.submit '', title: "добавить пост", class: "new_btn" %>
+  </div>
+
+  <div class="field">   
+    <%= f.hidden_field :post_id, :value => post.id %>
+  </div>
+  
+   
+<% end %>

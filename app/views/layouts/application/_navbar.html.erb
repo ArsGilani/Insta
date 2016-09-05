@@ -24,10 +24,10 @@
             <%= link_to '', new_post_path, title: 'new post', class: 'new-post' %>
           </li>
           <li class="navbar-text">
-            <%= link_to '', user_path(current_user),  class: 'user-interes' %>
+            <%= link_to '', users_path(current_user), title: 'Самое инетерсное', class: 'user-interes' %>
           </li>
            <li class="navbar-text">
-            <%= link_to '', user_path(current_user), class: 'user-show' %>
+            <%= link_to '', follow_user_path(current_user), class: 'user-show' %>
           </li>    
            <li class="navbar-text">
             <%= link_to '', user_path(current_user), title: 'my profil', class: 'user-icon' %>

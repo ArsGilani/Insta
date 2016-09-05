@@ -11,7 +11,8 @@
 
 			  <%= @user.name %>
 			</p>
-			
+			<% if @user == current_user %>
+		
 			<%= link_to 'Редакитровать профиль', edit_user_path(@user), class: "edit_prof" %> 
 			<ul class="dropdown">
 			    <li class="dropdown">
@@ -24,17 +25,22 @@
 			      </ul>
 			    </li>
 			 </ul>			
+			<% end %>
 		</div>
 		<div class="downbox">
-			<a href="#">Публикация</a>
+			<%= @user.posts.count %>
+
+			<a href="#"> Публикация</a>
+			<%= current_user.followers.count %>
 			<a href="#">подписчиков</a>
+			<%= current_user.followed_users.count %>
 			<a href="#">Подписки:&nbsp;</a>
 		</div>
 	</div>	
 </div>
 
 <div class="row">
-	<% @posts.each do |post| %>
+	<% @user.posts.each do |post| %>
 		<div class="col-md-4">
 			<div class="in_box">
 				<div class="wrap_post_img">
@@ -43,12 +49,15 @@
 								
 				</div>	
 				<div class="block_like">
+					
 					<%= link_to'', post_path(post), class: "like" %>
-					<%= link_to'', post_path(post), class: "comment" %>	
+					<%= link_to post_path(post), class: "comment" do %>	
+						<span><%= post.comments.count %></span>
+					<% end %>
 					
 				</div>
 			</div>
-		</div>
+		</div> 
 	<% end %>
 </div>
 
