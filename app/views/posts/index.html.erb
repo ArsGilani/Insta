@@ -27,7 +27,7 @@
 
 		    <div class="comments_box">
 		    	<div class="in_like_box">
-		    		<span>отметок&nbsp;&nbsp;&#171;нравится&#187;</span>	
+		    		<span><%= post.marks.size %>&nbsp;&nbsp;отметок&nbsp;&nbsp;&#171;нравится&#187;</span>	
 		    	</div>
 		    </div>
 			<div class="in_box_d">
@@ -50,18 +50,29 @@
 					</div>	
 				<% end %>					  				
 			</div>
-	 
+ 			
 	  		<div class="index_add_comment">
-	  		<% if current_user.following?(post.user ) or current_user == post.user %>
+		  		<% if current_user.following?(post.user ) or current_user == post.user %>
 
 
-	  			<div class="index_add_comment_a">
-	  				<%= link_to'',root_path, class: "like_index" %>			
-	  			</div>
-	  			<div class="index_form_box">
-					<%= render '/comments/form.html.erb', comment: @comment, post: post %>	  				
-	  			</div>
-			<% end %>
+		  			<div class="index_add_comment_a">
+		  				<% unless Mark.find_by(user: current_user.id, post_id: post.id) %>
+						<%= render '/marks/form', post: post %>
+						<% else %>
+							<% post.marks.each do |mark| %>
+							<% if mark.user == current_user.id %>
+								<%= link_to post_mark_path(post, mark), method: :delete, class: "liked" do %>
+									
+								<%end %>
+								<% end %>
+							<% end %>
+						<% end %>			
+		  			</div>
+		  			<div class="index_form_box">
+						<%= render '/comments/form.html.erb', comment: @comment, post: post %>	  				
+		  			</div>
+		  			
+				<% end %>
 	  		</div>	        
 		</div>
     <% end %>

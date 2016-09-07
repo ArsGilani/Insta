@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 	     :recoverable, :rememberable, :trackable, :validatable
 	validates :name, presence: true, length: {maximum: 50}
 
+	# acts_as_voter
+	
 	def following?(other_user)
 		relationships.find_by(followed_id: other_user.id)
 	end

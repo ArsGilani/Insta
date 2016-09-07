@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap/theme";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 li{
 	list-style: none;
 }
@@ -492,4 +494,15 @@ h4 a{
 .new_class{
 	margin-left: 10px;
 	margin-bottom: 20px;
+}
+.liked{
+	background-image: image-url('684453.png');        
+    background-repeat: no-repeat;
+	background-position: -104px -635px;
+   
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+    cursor: pointer;
+   
 }

@@ -20,12 +20,16 @@
 				
 			</div>	
 				<hr>
-			<div class="action_box">
+
+			<% if current_user.id == @post.user.id %>					
 				
-				<%= link_to 'Edit', edit_post_path(@post) %> |
-				<%= link_to 'Back', posts_path %> |
-				<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
-			</div>
+				<div class="action_box">
+					
+					<%= link_to 'Edit', edit_post_path(@post), class: "btn btn-default" %> 
+					<%= link_to 'Back', user_path, class: "btn btn-default" %> 
+					<%= link_to 'Destroy', @post, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+				</div>
+			<% end %>	
 		</div>
 	</div>
 </div>

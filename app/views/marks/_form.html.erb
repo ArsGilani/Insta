@@ -1,0 +1,8 @@
+<%= form_for [post,@mark] do |f| %>
+
+	<%= f.hidden_field :user, value: current_user.id %> 
+	<%= f.hidden_field :like, value: true %> 
+	<label class = "like_index",>
+		<%= f.submit '', style: "display: none;" %>
+	</label>
+<%end %>

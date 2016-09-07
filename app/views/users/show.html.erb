@@ -38,7 +38,13 @@
 		</div>
 	</div>	
 </div>
-
+<div class="wrap_button">
+	<% unless current_user?(@user) %>
+	  <div id="follow_form">
+	  	<%= render 'follow_form', user: @user %>
+	  </div>
+	<% end %>
+</div>
 <div class="row">
 	<% @user.posts.each do |post| %>
 		<div class="col-md-4">
@@ -50,7 +56,9 @@
 				</div>	
 				<div class="block_like">
 					
-					<%= link_to'', post_path(post), class: "like" %>
+					<%= link_to post_path(post), class: "like" do %>
+						<span><%= post.marks.size %></span>
+					<% end %>
 					<%= link_to post_path(post), class: "comment" do %>	
 						<span><%= post.comments.count %></span>
 					<% end %>
