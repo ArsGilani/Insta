@@ -22,11 +22,14 @@
 					<%= user.followed_users.count %>
 					<a href="#">Подписки:&nbsp;</a>
 				</div>
-				<% unless current_user?(user) %>
-				  <div id="follow_form">
-				  	<%= render 'follow_form', user: user %>
-				  </div>
-				<% end %>
+				<div class="index_all_user_box">
+					<% unless current_user?(user) %>
+					  <div id="follow_form">
+					  	<%= render 'follow_form', user: user %>
+					  </div>
+					<% end %>
+					
+				</div>
 	    	</div>
 	      <hr>
 	     

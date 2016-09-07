@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= current_user.name%></title>
+    <title> 
+    	<% if user_signed_in?%>
+	    	<%=  current_user.name %>
+	    	<% else %>
+	    	Instagram
+    	<% end %>
+    </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>

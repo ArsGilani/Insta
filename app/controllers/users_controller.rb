@@ -31,6 +31,7 @@ class UsersController < ApplicationController
  
   def new
     @user = User.new
+    # @comment = Comment.new
   end
 
 
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
  
   def create
     @user = User.new(user_params)
-
+    @comment = current_user.comments.build(comment_params)
     respond_to do |format|
       if @user.save
       

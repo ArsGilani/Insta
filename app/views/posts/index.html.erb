@@ -42,7 +42,7 @@
 						<div class="p_comm_des">
 							<p> <%= comment.description %></p>
 
-						<% if current_user == post.user %>	
+						<% if comment.user == current_user || post.user == current_user %>	
 						<%= link_to 'X', comment_path(comment),class: "destroy", method: :delete, data: { confirm: 'Are you sure?' } %>
 						<% end %>
 						</div>	
