@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
 
-	resources :comments
   resources :posts do
-    resources :marks, only: [:new, :create, :destroy]
+      resources :marks, only: [:new, :create, :destroy]
+	   resources :comments
   end
   devise_scope :user do
     root to: "devise/sessions#new"
+     resources :comments
+    
   end
   
 
