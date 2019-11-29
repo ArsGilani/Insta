@@ -21,7 +21,7 @@ gem 'font-awesome-sass'
 
 gem "paperclip"
 
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
